@@ -6,4 +6,5 @@
 		Example:
 		set(errorEmailAddress="someone@somewhere.com");
 	*/
+	set(errorEmailAddress="peter@alurium.com");
 </cfscript>
