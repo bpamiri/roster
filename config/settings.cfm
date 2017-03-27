@@ -3,7 +3,7 @@
 		If you leave these settings commented out, CFWheels will set the data source name to the same name as the folder the application resides in.
 	*/
 
-	// set(dataSourceName="");
+	set(dataSourceName="roster");
 	// set(dataSourceUserName="");
 	// set(dataSourcePassword=""); 
 
@@ -14,5 +14,12 @@
 		To run with rewriting set to "on", you need to apply the necessary rewrite rules on the web server first.
 	*/
 
-	// set(URLRewriting="partial");
+	set(URLRewriting="on");
+	
+	set(obfuscateURLs=true);
+	
+	set(functionName="textField",labelPlacement="before");
+	set(functionName="passwordField",labelPlacement="before");
+	set(functionName="fileField",labelPlacement="before");
+
 </cfscript>
