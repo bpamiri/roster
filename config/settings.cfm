@@ -14,7 +14,7 @@
 		To run with rewriting set to "on", you need to apply the necessary rewrite rules on the web server first.
 	*/
 
-	// set(URLRewriting="on");
+	set(URLRewriting="on");
 	
 	set(obfuscateURLs=true);
 	

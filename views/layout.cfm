@@ -46,7 +46,7 @@
 					<strong>
 					<cfif StructKeyExists(session, "user")>
 							#linkTo(text="Rosters", controller="rosters", action="index")# 
-							| #linkTo(text="Add New Roster", controller="rosters", action="add")# 
+							| #linkTo(text="Add New Roster", route="newRoster")# 
 							| 
 					</cfif>
 					

@@ -1,6 +1,6 @@
 <cfcomponent extends="Model" output="false">
 
-	<cffunction name="init">
+	<cffunction name="config">
 	
 		<cfset validatesPresenceOf("firstName,lastName,email,password")>
 		<cfset validatesFormatOf(property="email",type="email")>

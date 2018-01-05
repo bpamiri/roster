@@ -1,6 +1,6 @@
 <cfcomponent extends="controller">
 	
-	<cffunction name="init"> 
+	<cffunction name="config"> 
 	
 		<cfset filters(through="isLoggedIn", except="register,create,login,signin,activate,thankYou,reset,processreset")>
 	
@@ -19,7 +19,7 @@
 		<cfset user.save()>
 		
 		<cfif user.hasErrors()>
-			<cfset RenderPage(action="register")>
+			<cfset renderView(action="register")>
 		<cfelse>
 			<cfset
 				sendEmail( 
@@ -51,11 +51,11 @@
 			<cfset session.user.id = user.id>
 			<cfset session.user.email = user.email>
 			<cfset session.user.admin = user.admin>
-			<cfset redirectTo(controller="rosters")>
+			<cfset redirectTo(controller="rosters",action="index")>
 		<cfelse>
 			<cfset user = model("user").new(email=params.user.email)>
 			<cfset flashInsert(error="The email and password combination you entered is not valid. Please check that you've entered your email and password correctly. If this is the first time you are attempting to login, please make sure you have validated your email to activate your account.")>
-			<cfset renderPage(action="login")>
+			<cfset renderView(action="login")>
 		</cfif>
 		
 	</cffunction>
@@ -118,7 +118,7 @@
 			<cfif user.hasErrors()>
 				<cfset user = model("user").new(email=params.user.email)>
 				<cfset flashInsert(error="Unable to reset the password. Please try again later.")>
-				<cfset RenderPage(action="reset")>
+				<cfset renderView(action="reset")>
 			<cfelse>
 				<cfset
 					sendEmail( 
@@ -135,7 +135,7 @@
 		<cfelse>
 			<cfset user = model("user").new()>
 			<cfset flashInsert(error="The email you entered was not found in our user database.")>
-			<cfset renderPage(action="reset")>
+			<cfset renderView(action="reset")>
 		</cfif>
 	</cffunction>
 	
@@ -152,7 +152,7 @@
 		
 		<cfif user.hasErrors()>
 			<cfset flashInsert(error="Unable to update your profile at this time, please try again later.")>
-			<cfset RenderPage(action="myaccount")>
+			<cfset renderView(action="myaccount")>
 		<cfelse>
 			<cfset flashInsert(success="You've successfully updated your account profile.")>
 			<cfset redirectTo(route="home")>

@@ -1,6 +1,6 @@
 <cfcomponent extends="Model">
 
-	<cffunction name="init"> 
+	<cffunction name="config"> 
 	
 		<cfset validatesPresenceOf("name,community,rosterFile")>
 		<cfset validatesLengthOf(property="name", maximum="50")>

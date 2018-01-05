@@ -4,5 +4,5 @@
 	Do not delete this file.
 --->
 
-<cfcomponent extends="Wheels">
+<cfcomponent extends="wheels.Model">
 </cfcomponent>

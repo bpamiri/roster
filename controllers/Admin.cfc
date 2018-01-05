@@ -1,6 +1,6 @@
 <cfcomponent extends="controller">
 	
-	<cffunction name="init"> 
+	<cffunction name="config"> 
 		<cfset filters(through="isLoggedIn,isAdmin")>
 	</cffunction>	
 	
@@ -11,10 +11,12 @@
 	</cffunction>
 	
 	<cffunction name="loginAs">
+
+		<cfset user = model("user").findOne(where="id='#params.id#'")>
 	
-		<cfset session.user.id = params.id>
-		<cfset session.user.email = params.email>
-		<cfset redirectTo(controller="Rosters")>		
+		<cfset session.user.id = user.id>
+		<cfset session.user.email = user.email>
+		<cfset redirectTo(controller="Rosters")>
 		
 	</cffunction>
 

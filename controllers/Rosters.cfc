@@ -1,12 +1,12 @@
 <cfcomponent extends="controller">
 	
-	<cffunction name="init"> 
+	<cffunction name="config"> 
 	
 		<cfset filters(through="isLoggedIn")>
 	
 	</cffunction>	
 	
-	<cffunction name="add">
+	<cffunction name="new">
 	
 		<cfset roster = model("roster").New()>
 		<cfset default = model("roster").findOne(where="userid=#session.user.id#",order="id desc")>
@@ -33,7 +33,7 @@
 		<cfset roster.save()>
 		
 		<cfif roster.hasErrors()>
-			<cfset RenderPage(action="add")>
+			<cfset renderView(action="add")>
 		<cfelse>
 			<cffile action="read" file="#roster.rosterFile#" variable="csvfile">
 
@@ -110,6 +110,7 @@
 			
 			<cfset flashInsert(success="You've successfully uploaded a roser file.")>
 			<cfset redirectTo(action="edit",key=roster.id)>
+			
 		</cfif>
 	
 	</cffunction>
@@ -130,7 +131,7 @@
 			<cfset roster.deleteAllMembers()>
 			<cfset roster.delete()>
 
-			<cfset flashInsert(success="You've successfully delete the roster and associated member records.")>
+			<cfset flashInsert(success="You've successfully deleted the roster and associated member records.")>
 		<cfelse>
 			<cfset flashInsert(error="Unable to delete the selected roster file. Please try again later.")>
 		</cfif>	

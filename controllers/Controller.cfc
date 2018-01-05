@@ -4,7 +4,7 @@
 	Do not delete this file.
 --->
 
-<cfcomponent extends="Wheels">
+<cfcomponent extends="wheels.Controller">
 
 	<cffunction name="isLoggedIn">
 		<cfif NOT StructKeyExists(session,"user")>

@@ -41,7 +41,7 @@
 		<tbody>
 			<cfloop array=#users# index="user">
 				<tr>
-					<td>#linkTo(text="#user.firstname# #user.lastname#", route="loginAs", id=user.ID, email=user.email)#</td>
+					<td>#linkTo(text="#user.firstname# #user.lastname#", route="loginAs", id=user.id)#</td>
 					<td>#user.email#</td>
 					<td>#user.admin#</td>
 					<td>#user.activated#</td>

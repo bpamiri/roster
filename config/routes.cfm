@@ -4,17 +4,19 @@
 		The default route is the one that will be called on your application's "home" page.
 	*/
 
-	addRoute(name="home", 			pattern="", 					controller="publicPages", 	action="aboutus");
-
-	addRoute(name="login",  		pattern="login",  				controller="userManager", 	action="login");
-	addRoute(name="logout", 		pattern="logout", 				controller="userManager", 	action="logout");
-	addRoute(name="register", 		pattern="register", 			controller="userManager", 	action="register");
-	addRoute(name="signin",  		pattern="signin",  				controller="userManager", 	action="signin");
-	addRoute(name="activate",  		pattern="activate/[uuid]",  	controller="userManager", 	action="activate");
-	addRoute(name="reset",  		pattern="reset",  				controller="userManager", 	action="reset");
-	addRoute(name="processreset",  	pattern="processreset",  		controller="userManager", 	action="processreset");
-	addRoute(name="myaccount",  	pattern="myaccount",  			controller="userManager", 	action="myaccount");
-	
-	addRoute(name="loginAs",  		pattern="loginAs/[id]/[email]",	controller="admin", 		action="loginAs");
+	mapper()
+	    .resources("rosters")
+		.get(name="loginAs", 		pattern="loginAs/[id]",	        controller="admin", 		action="loginAs")
+		.get(name="login",  		pattern="login",  				controller="userManager", 	action="login")
+		.get(name="logout", 		pattern="logout", 				controller="userManager", 	action="logout")
+		.get(name="register", 		pattern="register", 			controller="userManager", 	action="register")
+		.post(name="signin",  		pattern="signin",  				controller="userManager", 	action="signin")
+		.get(name="activate",  		pattern="activate/[uuid]",  	controller="userManager", 	action="activate")
+		.get(name="reset",  		pattern="reset",  				controller="userManager", 	action="reset")
+		.get(name="processreset",  	pattern="processreset",  		controller="userManager", 	action="processreset")
+		.get(name="myaccount",  	pattern="myaccount",  			controller="userManager", 	action="myaccount")
+		.get(name="home", 			pattern="", 					controller="publicPages", 	action="aboutus")
+		.wildcard()
+	.end();
 
 </cfscript>
