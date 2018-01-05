@@ -49,7 +49,7 @@
 			<th>Roster</th>
 			<td>
 				<cfif roster.id GT 245>
-						#linkTo(text="Full Roster", 	action="pdf", key="#roster.ID#")#
+						#linkTo(text="Full Roster", route="fullRoster", key="#roster.ID#")#
 				<cfelse>
 						Unable to generate roster files for older formats.
 				</cfif>
@@ -65,14 +65,14 @@
 			<tr>
 				<th>Sectors</th>
 				<td>
-					#linkTo(text="Roster by Sector", 	action="sectorPdf", key="#roster.ID#")#
-					| #linkTo(text="Sector Stats", 	action="sectorstats", key="#roster.ID#")#
+					#linkTo(text="Roster by Sector", 	action="sectorRoster", key="#roster.ID#")#
+<!---					| #linkTo(text="Sector Stats", 	action="sectorstats", key="#roster.ID#")# --->
 				</td> sectorstats
 			</tr>
 		</cfif>
 		<tr>
 			<th>Letters</th>
-			<td>#linkTo(text="Generate Verification Letter", action="verification", key="#roster.ID#")#</td>
+			<td>#linkTo(text="Generate Verification Letter", route="verificationLetter", key="#roster.ID#")#</td>
 		</tr>
 	</table>
 </cfoutput>

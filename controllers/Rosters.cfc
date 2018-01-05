@@ -167,7 +167,7 @@
 
 	</cffunction>
 
-	<cffunction name="pdf">
+	<cffunction name="fullRoster">
 	
 		<cfset roster = model("roster").findOne(where="id=#params.key# AND userid=#session.user.id#")>
 
@@ -181,7 +181,7 @@
 
 	</cffunction>
 
-	<cffunction name="sectorPdf">
+	<cffunction name="sectorRoster">
 	
 		<cfset roster = model("roster").findOne(where="id=#params.key# AND userid=#session.user.id#")>
 
@@ -195,7 +195,7 @@
 
 	</cffunction>
 
-	<cffunction name="verification">
+	<cffunction name="verificationLetter">
 	
 		<cfset user = model("user").findByKey(session.user.id)>
 		<cfset roster = model("roster").findOne(where="id=#params.key# AND userid=#session.user.id#")>
