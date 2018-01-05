@@ -4,7 +4,7 @@
 
 	<h2>My Account Settings</h2>
 
-	#startFormTag(action="updateaccount")#
+	#startFormTag(route="updateaccount")#
 	
 	#errorMessagesFor("user")#
 	

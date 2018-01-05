@@ -4,7 +4,7 @@
 
 	<h2>Register for eMembership Roster Creator</h2>
 
-	#startFormTag(action="create")#
+	#startFormTag(route="createUser")#
 	
 	#errorMessagesFor("user")#
 	

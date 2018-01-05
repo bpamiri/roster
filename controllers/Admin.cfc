@@ -16,7 +16,7 @@
 	
 		<cfset session.user.id = user.id>
 		<cfset session.user.email = user.email>
-		<cfset redirectTo(controller="Rosters")>
+		<cfset redirectTo(route="Rosters")>
 		
 	</cffunction>
 

@@ -26,7 +26,7 @@
 		</cfif>
 	</cffunction>
 	
-	<cffunction name="process">
+	<cffunction name="create">
 			
 		<cfset roster = model("roster").new(params.roster)>
 		<cfset roster.userid = session.user.id>

@@ -12,7 +12,7 @@
 	
 	</cffunction>
 	
-	<cffunction name="create">
+	<cffunction name="createUser">
 	
 		<cfset user = model("user").new(params.user)>
 		<cfset user.uuid = CreateUUID()>
