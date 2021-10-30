@@ -3,7 +3,7 @@
 	<p class="error-messages">#flash("error")#</p>
 </cfif>
 
-<h1>Welcome to eMembership Roster Creator</h1>
+<h2>.Welcome to eMembership Roster Creator!!!</h2>
 
 <cfif len(flash("success"))>
 	<p class="success-messages">#flash("success")#</p>

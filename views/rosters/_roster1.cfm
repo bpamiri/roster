@@ -215,7 +215,7 @@
 					        font-size: 14px;
 					        font-weight: bold;
 					        border-bottom: 1px solid #000000;
-					        '>Members with unknown household settings:&nbsp;
+					        '>Members with unknown household settings or requested no mail:&nbsp;
 					    </td>
 					</tr>
 					

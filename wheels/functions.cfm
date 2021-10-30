@@ -21,14 +21,19 @@ this.sessionManagement = true;
 
 // If a plugin has a jar or class file, automatically add the mapping to this.javasettings.
 this.wheels.pluginDir = this.wheels.rootPath & "plugins";
-this.wheels.pluginFolders = DirectoryList(this.wheels.pluginDir, "true", "path", "*.class|*.jar|*.java");
+this.wheels.pluginFolders = DirectoryList(
+	this.wheels.pluginDir,
+	"true",
+	"path",
+	"*.class|*.jar|*.java"
+);
 
 for (this.wheels.folder in this.wheels.pluginFolders) {
-	if(!structKeyExists(this, "javaSettings")){
-		this.javaSettings={};
+	if (!StructKeyExists(this, "javaSettings")) {
+		this.javaSettings = {};
 	}
-	if(!structKeyExists(this.javaSettings, "LoadPaths")){
-		this.javaSettings.LoadPaths=[];
+	if (!StructKeyExists(this.javaSettings, "LoadPaths")) {
+		this.javaSettings.LoadPaths = [];
 	}
 	this.wheels.pluginPath = GetDirectoryFromPath(this.wheels.folder);
 	if (!ArrayFind(this.javaSettings.LoadPaths, this.wheels.pluginPath)) {
@@ -46,6 +51,7 @@ if (StructKeyExists(server, "lucee")) {
 	include "events/onapplicationend.cfm";
 	include "events/onapplicationstart.cfm";
 	include "events/onerror.cfm";
+	include "events/onabort.cfm";
 	include "events/onmissingtemplate.cfm";
 	include "events/onsessionend.cfm";
 	include "events/onsessionstart.cfm";
@@ -59,6 +65,7 @@ if (StructKeyExists(server, "lucee")) {
 	include "wheels/events/onapplicationend.cfm";
 	include "wheels/events/onapplicationstart.cfm";
 	include "wheels/events/onerror.cfm";
+	include "wheels/events/onabort.cfm";
 	include "wheels/events/onmissingtemplate.cfm";
 	include "wheels/events/onsessionend.cfm";
 	include "wheels/events/onsessionstart.cfm";
@@ -66,5 +73,4 @@ if (StructKeyExists(server, "lucee")) {
 	include "wheels/events/onrequestend.cfm";
 	include "wheels/events/onrequeststart.cfm";
 }
-
 </cfscript>

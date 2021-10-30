@@ -1,7 +1,6 @@
 <cfscript>
-
 /**
- * Create a route that matches a URL requiring an HTTML `GET` method. We recommend only using this matcher to expose actions that display data. See `post`, `patch`, `delete`, and `put` for matchers that are appropriate for actions that change data in your database.
+ * Create a route that matches a URL requiring an HTTP `GET` method. We recommend only using this matcher to expose actions that display data. See `post`, `patch`, `delete`, and `put` for matchers that are appropriate for actions that change data in your database.
  *
  * [section: Configuration]
  * [category: Routing]
@@ -13,6 +12,7 @@
  * @action Map the route to a given action within the `controller`. This must be passed along with the `controller` argument.
  * @package Indicates a subfolder that the controller will be referenced from (but not added to the URL pattern). For example, if you set this to `admin`, the controller will be located at `admin/YourController.cfc`, but the URL path will not contain `admin/`.
  * @on If this route is within a nested resource, you can set this argument to `member` or `collection`. A `member` route contains a reference to the resource's `key`, while a `collection` route does not.
+ * @redirect Redirect via 302 to this URL when this route is matched. Has precedence over controller/action. Use either an absolute link like `/about/`, or a full canonical link.
  */
 public struct function get(
 	string name,
@@ -21,9 +21,10 @@ public struct function get(
 	string controller,
 	string action,
 	string package,
-	string on
+	string on,
+	string redirect
 ) {
-	return $match(argumentCollection=arguments, method="get");
+	return $match(argumentCollection = arguments, method = "get");
 }
 
 /**
@@ -39,6 +40,7 @@ public struct function get(
  * @action Map the route to a given action within the `controller`. This must be passed along with the `controller` argument.
  * @package Indicates a subfolder that the controller will be referenced from (but not added to the URL pattern). For example, if you set this to `admin`, the controller will be located at `admin/YourController.cfc`, but the URL path will not contain `admin/`.
  * @on If this route is within a nested resource, you can set this argument to `member` or `collection`. A `member` route contains a reference to the resource's `key`, while a `collection` route does not.
+ * @redirect Redirect via 302 to this URL when this route is matched. Has precedence over controller/action. Use either an absolute link like `/about/`, or a full canonical link.
  */
 public struct function post(
 	string name,
@@ -47,9 +49,10 @@ public struct function post(
 	string controller,
 	string action,
 	string package,
-	string on
+	string on,
+	string redirect
 ) {
-	return $match(argumentCollection=arguments, method="post");
+	return $match(argumentCollection = arguments, method = "post");
 }
 
 /**
@@ -65,6 +68,7 @@ public struct function post(
  * @action Map the route to a given action within the `controller`. This must be passed along with the `controller` argument.
  * @package Indicates a subfolder that the controller will be referenced from (but not added to the URL pattern). For example, if you set this to `admin`, the controller will be located at `admin/YourController.cfc`, but the URL path will not contain `admin/`.
  * @on If this route is within a nested resource, you can set this argument to `member` or `collection`. A `member` route contains a reference to the resource's `key`, while a `collection` route does not.
+ * @redirect Redirect via 302 to this URL when this route is matched. Has precedence over controller/action. Use either an absolute link like `/about/`, or a full canonical link.
  */
 public struct function patch(
 	string name,
@@ -73,9 +77,10 @@ public struct function patch(
 	string controller,
 	string action,
 	string package,
-	string on
+	string on,
+	string redirect
 ) {
-	return $match(argumentCollection=arguments, method="patch");
+	return $match(argumentCollection = arguments, method = "patch");
 }
 
 /**
@@ -91,6 +96,7 @@ public struct function patch(
  * @action Map the route to a given action within the `controller`. This must be passed along with the `controller` argument.
  * @package Indicates a subfolder that the controller will be referenced from (but not added to the URL pattern). For example, if you set this to `admin`, the controller will be located at `admin/YourController.cfc`, but the URL path will not contain `admin/`.
  * @on If this route is within a nested resource, you can set this argument to `member` or `collection`. A `member` route contains a reference to the resource's `key`, while a `collection` route does not.
+ * @redirect Redirect via 302 to this URL when this route is matched. Has precedence over controller/action. Use either an absolute link like `/about/`, or a full canonical link.
  */
 public struct function put(
 	string name,
@@ -99,9 +105,10 @@ public struct function put(
 	string controller,
 	string action,
 	string package,
-	string on
+	string on,
+	string redirect
 ) {
-	return $match(argumentCollection=arguments, method="put");
+	return $match(argumentCollection = arguments, method = "put");
 }
 
 /**
@@ -117,6 +124,7 @@ public struct function put(
  * @action Map the route to a given action within the `controller`. This must be passed along with the `controller` argument.
  * @package Indicates a subfolder that the controller will be referenced from (but not added to the URL pattern). For example, if you set this to `admin`, the controller will be located at `admin/YourController.cfc`, but the URL path will not contain `admin/`.
  * @on If this route is within a nested resource, you can set this argument to `member` or `collection`. A `member` route contains a reference to the resource's `key`, while a `collection` route does not.
+ * @redirect Redirect via 302 to this URL when this route is matched. Has precedence over controller/action. Use either an absolute link like `/about/`, or a full canonical link.
  */
 public struct function delete(
 	string name,
@@ -125,9 +133,10 @@ public struct function delete(
 	string controller,
 	string action,
 	string package,
-	string on
+	string on,
+	string redirect
 ) {
-	return $match(argumentCollection=arguments, method="delete");
+	return $match(argumentCollection = arguments, method = "delete");
 }
 
 /**
@@ -156,7 +165,7 @@ public struct function root(string to, boolean mapFormat) {
 	} else {
 		local.pattern = "/";
 	}
-	return $match(name="root", pattern=local.pattern, argumentCollection=arguments);
+	return $match(name = "root", pattern = local.pattern, argumentCollection = arguments);
 }
 
 /**
@@ -171,18 +180,24 @@ public struct function root(string to, boolean mapFormat) {
  * @mapFormat Whether or not to add an optional `.[format]` pattern to the end of the generated routes. This is useful for providing formats via URL like `json`, `xml`, `pdf`, etc.
  */
 public struct function wildcard(
-		string method="get",
-		string action="index",
-		boolean mapKey=false,
-		boolean mapFormat=false
+	string method = "get",
+	string action = "index",
+	boolean mapKey = false,
+	boolean mapFormat = false
 ) {
-  if (StructKeyExists(arguments, "methods") && Len(arguments.methods)) {
-    local.methods = arguments.methods;
-  } else if (Len(arguments.method)) {
-    local.methods = ListToArray(arguments.method);
-  } else {
-    local.methods = ["get", "post", "put", "patch", "delete"];
-  }
+	if (StructKeyExists(arguments, "methods") && Len(arguments.methods)) {
+		local.methods = arguments.methods;
+	} else if (Len(arguments.method)) {
+		local.methods = ListToArray(arguments.method);
+	} else {
+		local.methods = [
+			"get",
+			"post",
+			"put",
+			"patch",
+			"delete"
+		];
+	}
 
 	local.formatPattern = "";
 	if (arguments.mapFormat) {
@@ -190,37 +205,52 @@ public struct function wildcard(
 	}
 
 	if (StructKeyExists(variables.scopeStack[1], "controller")) {
-    for (local.method in local.methods) {
-			if (arguments.mapKey) {
-				$match(method=local.method, name="wildcard", pattern="[action]/[key]#local.formatPattern#", action=arguments.action);
-			}
-			$match(method=local.method, name="wildcard", pattern="[action]#local.formatPattern#", action=arguments.action);
-      $match(method=local.method, name="wildcard", pattern=local.formatPattern, action=arguments.action);
-    }
-	} else {
-    for (local.method in local.methods) {
+		for (local.method in local.methods) {
 			if (arguments.mapKey) {
 				$match(
-					method=local.method,
-					name="wildcard",
-					pattern="[controller]/[action]/[key]#local.formatPattern#",
-					action=arguments.action
+					method = local.method,
+					name = "wildcard",
+					pattern = "[action]/[key]#local.formatPattern#",
+					action = arguments.action
 				);
 			}
-		  $match(
-        method=local.method,
-        name="wildcard",
-        pattern="[controller]/[action]#local.formatPattern#",
-        action=arguments.action
-      );
+			$match(
+				method = local.method,
+				name = "wildcard",
+				pattern = "[action]#local.formatPattern#",
+				action = arguments.action
+			);
+			$match(
+				method = local.method,
+				name = "wildcard",
+				pattern = local.formatPattern,
+				action = arguments.action
+			);
+		}
+	} else {
+		for (local.method in local.methods) {
+			if (arguments.mapKey) {
+				$match(
+					method = local.method,
+					name = "wildcard",
+					pattern = "[controller]/[action]/[key]#local.formatPattern#",
+					action = arguments.action
+				);
+			}
+			$match(
+				method = local.method,
+				name = "wildcard",
+				pattern = "[controller]/[action]#local.formatPattern#",
+				action = arguments.action
+			);
 
-      $match(
-        method=local.method,
-        name="wildcard",
-        pattern="[controller]#local.formatPattern#",
-        action=arguments.action
-      );
-    }
+			$match(
+				method = local.method,
+				name = "wildcard",
+				pattern = "[controller]#local.formatPattern#",
+				action = arguments.action
+			);
+		}
 	}
 	return this;
 }
@@ -243,16 +273,15 @@ public struct function $match(
 	string methods,
 	string package,
 	string on,
-	struct constraints={}
+	struct constraints = {}
 ) {
 	// Evaluate match on member or collection.
 	if (StructKeyExists(arguments, "on")) {
 		switch (arguments.on) {
 			case "member":
-				return member().$match(argumentCollection=arguments, on="").end();
-
+				return member().$match(argumentCollection = arguments, on = "").end();
 			case "collection":
-				return collection().$match(argumentCollection=arguments, on="").end();
+				return collection().$match(argumentCollection = arguments, on = "").end();
 		}
 	}
 
@@ -293,7 +322,7 @@ public struct function $match(
 
 	// Die if pattern is not defined.
 	if (!StructKeyExists(arguments, "pattern")) {
-		Throw(type="Wheels.MapperArgumentMissing", message="Either 'pattern' or 'name' must be defined.");
+		Throw(type = "Wheels.MapperArgumentMissing", message = "Either 'pattern' or 'name' must be defined.");
 	}
 
 	// Accept either "method" or "methods".
@@ -308,11 +337,11 @@ public struct function $match(
 	}
 
 	// See if we have any globing in the pattern and if so add a constraint for each glob.
-	if (REFindNoCase("\*([^\/]+)", arguments.pattern)) {
-		local.globs = REMatch("\*([^\/]+)", arguments.pattern);
+	if (ReFindNoCase("\*([^\/]+)", arguments.pattern)) {
+		local.globs = ReMatch("\*([^\/]+)", arguments.pattern);
 		for (local.glob in local.globs) {
-			local.var = replaceList(local.glob, "*,[,]", "");
-			arguments.pattern = replace(arguments.pattern, local.glob, "[#local.var#]");
+			local.var = ReplaceList(local.glob, "*,[,]", "");
+			arguments.pattern = Replace(arguments.pattern, local.glob, "[#local.var#]");
 			arguments.constraints[local.var] = ".*";
 		}
 	}
@@ -353,9 +382,9 @@ public struct function $match(
 
 	// Transform array into named route.
 	local.name = ArrayToList(local.nameStruct);
-	local.name = REReplace(local.name, "^,+|,+$", "", "all");
-	local.name = REReplace(local.name, ",+(\w)", "\U\1", "all");
-	local.name = REReplace(local.name, ",", "", "all");
+	local.name = ReReplace(local.name, "^,+|,+$", "", "all");
+	local.name = ReReplace(local.name, ",+(\w)", "\U\1", "all");
+	local.name = ReReplace(local.name, ",", "", "all");
 
 	// If we have a name, add it to arguments.
 	if (Len(local.name)) {
@@ -365,8 +394,8 @@ public struct function $match(
 	// Handle optional pattern segments.
 	if (Find("(", arguments.pattern)) {
 		// Confirm nesting of optional segments.
-		if (REFind("\).*\(", arguments.pattern)) {
-			Throw(type="Wheels.InvalidRoute", message="Optional pattern segments must be nested.");
+		if (ReFind("\).*\(", arguments.pattern)) {
+			Throw(type = "Wheels.InvalidRoute", message = "Optional pattern segments must be nested.");
 		}
 
 		// Strip closing parens from pattern.
@@ -375,18 +404,16 @@ public struct function $match(
 		// Loop over all possible patterns.
 		while (Len(local.pattern)) {
 			// Add current route to Wheels.
-			$addRoute(argumentCollection=arguments, pattern=Replace(local.pattern, "(", "", "all"));
+			$addRoute(argumentCollection = arguments, pattern = Replace(local.pattern, "(", "", "all"));
 
 			// Remove last optional segment.
-			local.pattern = REReplace(local.pattern, "(^|\()[^(]+$", "");
-
+			local.pattern = ReReplace(local.pattern, "(^|\()[^(]+$", "");
 		}
 	} else {
 		// Add route to Wheels as is.
-		$addRoute(argumentCollection=arguments);
+		$addRoute(argumentCollection = arguments);
 	}
 
 	return this;
 }
-
 </cfscript>

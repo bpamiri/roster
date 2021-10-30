@@ -2,7 +2,7 @@
 	
 	<cffunction name="config"> 
 	
-		<cfset filters(through="isLoggedIn", except="register,create,login,signin,activate,thankYou,reset,processreset")>
+		<cfset filters(through="isLoggedIn", except="register,createUser,login,signin,activate,thankYou,reset,processreset")>
 	
 	</cffunction>	
 
@@ -32,7 +32,7 @@
 				)
 			>
 			<cfset flashInsert(success="You've successfully registered. You must validate your email address before your account will be activated.")>
-			<cfset redirectTo(action="thankYou")>		
+			<cfset renderView(action="thankYou")>		
 		</cfif>
 	
 	</cffunction>
