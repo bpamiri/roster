@@ -24,6 +24,7 @@
 		.post(name="updateaccount", pattern="updateaccount",  	controller="userManager", 	action="updateaccount")
 		
 		.get(name="home", 			pattern="", 				controller="publicPages", 	action="aboutus")
+		.get(name="users", 			pattern="users", 			controller="admin", 	action="users")
 		
 		.wildcard()
 	.end();

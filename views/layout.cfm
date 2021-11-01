@@ -54,7 +54,7 @@
 					<!---| <a href="http://blog.amiri.net/category/roster-creator/" target="_blank">Blog</a>--->
 					
 					<cfif StructKeyExists(session, "user") and session.user.admin> 
-						| #linkTo(text="Userss", controller="admin", action="users")# <!---
+						| #linkTo(text="Users", route="users")# <!---
 						| #linkTo(text="admin2", controller="adminPages", action="admin2")#
 						| #linkTo(text="admin3", controller="adminPages", action="admin3")#
 						| #linkTo(text="admin4", controller="adminPages", action="admin4")#
