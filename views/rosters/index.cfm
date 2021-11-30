@@ -11,10 +11,10 @@
 		<p class="error-messages">#flash("error")#</p>
 	</cfif>
 
-	<table cellspacing="5" cellpadding="2" width="100%" id="hor-minimalist-b" summary="List of Rosters">
+	<table class="table is-striped is-hoverable">
 		<thead>
 			<tr>
-				<th>Name</th>
+				<th class="has-text-left">Name</th>
 				<th>Uploaded</th>
 				<th>Members</th>
 				<th>HoH</th>
@@ -45,23 +45,23 @@
 			<cfloop query="rosters">
 				<tr>
 					<td>#rosters.name#</td>
-					<td>#DateFormat(rosters.createdAt,"Short")# #TimeFormat(rosters.createdAt,"Short")#</td>
-					<td>#rosters.membercount#</td>
-					<td>#rosters.hohcount#</td>
-					<td>#rosters.adultcount#</td>
-					<td>#rosters.youthcount#</td>
-					<td>#rosters.jryouthcount#</td>
-					<td>#rosters.childcount#</td>
-					<td>#rosters.sectorcount#</td>
+					<td class="has-text-centered">#DateFormat(rosters.createdAt,"Short")# #TimeFormat(rosters.createdAt,"Short")#</td>
+					<td class="has-text-centered">#rosters.membercount#</td>
+					<td class="has-text-centered">#rosters.hohcount#</td>
+					<td class="has-text-centered">#rosters.adultcount#</td>
+					<td class="has-text-centered">#rosters.youthcount#</td>
+					<td class="has-text-centered">#rosters.jryouthcount#</td>
+					<td class="has-text-centered">#rosters.childcount#</td>
+					<td class="has-text-centered">#rosters.sectorcount#</td>
 					<td align="right">
-						#buttonTo(
+						#linkTo(
 						    text="EDIT",
 						    route="editRoster",
 						    key="#rosters.ID#",
 						    method="get",
 						    inputClass="button-as-link"
 						)#
-						#buttonTo(
+						#linkTo(
 						    text="DELETE",
 						    route="roster",
 						    key="#rosters.ID#",

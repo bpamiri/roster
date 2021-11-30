@@ -18,7 +18,16 @@
 	
 	set(obfuscateURLs=true);
 	
-	set(functionName="textField",labelPlacement="before");
+	set(
+		class="input",
+		labelClass="label",
+		functionName="textField",
+		labelPlacement="before",
+		prepend="</div>",
+		append="</div>",
+		prependToLabel="<div class='field'>",
+		appendToLabel="<div class='control'>",
+		encode=false);
 	set(functionName="passwordField",labelPlacement="before");
 	set(functionName="fileField",labelPlacement="before");
 

@@ -117,7 +117,7 @@
 	
 	<cffunction name="index">
 	
-		<cfset rosters = model("roster").findAll(where="userid = #session.user.id#")>
+		<cfset rosters = model("roster").findAll(where="userid = #session.user.id#",order="id desc")>
 		<cfif rosters.recordcount eq 0>
 			<cfset flashInsert(error="There are no roster files to display. Use the Add Roster link to upload a new roster.")>
 		</cfif>	
