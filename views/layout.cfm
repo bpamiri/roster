@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<cfoutput><html lang="en">
 	<head>
 		<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,33 +9,45 @@
 		<title>RosterApp.io</title>
 	</head>
 	<body>
-		<nav class="navbar" role="navigation" aria-label="main navigation">
-			<div class="navbar-brand">
-				<h1 class="navbar-item"><strong>RosterApp.io</strong></h1>
-		  
-				
-		  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-				<span aria-hidden="true"></span>
-				<span aria-hidden="true"></span>
-				<span aria-hidden="true"></span>
-			  </a>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand mb-0 h1" href="##">RosterApp.io</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="##navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav me-auto">
+						<cfif StructKeyExists(session, "user")>
+							#linkTo(text="Rosters", controller="rosters", action="index",class="nav-link")# 
+							#linkTo(text="Add New Roster", route="newRoster",class="nav-link")#  
+						</cfif>
+
+						#linkTo(text="About Us",    route="home",class="nav-link")#
+
+						<cfif StructKeyExists(session, "user") and session.user.admin> 
+							#linkTo(text="Users", route="users", class="nav-link")# 
+						</cfif>	
+					</div>
+					
+					<span class="d-flex">
+						<cfif StructKeyExists(session, "user")>
+							<strong class="btn">#session.user.email#</strong> 
+							#linkTo(text="My Account", role="button", controller="userManager", action="myaccount",class="btn btn-outline-success mx-2")# 
+							#linkTo(text="Logout", role="button", route="logout",class="btn btn-success")#
+						<cfelse>
+							#linkTo(text="Sign up", role="button", route="register",class="btn btn-outline-success")#
+							#linkTo(text="Password Reset", role="button", route="reset",class="btn btn-outline-success mx-2")#
+							#linkTo(text="Log in", role="button", route="login",class="btn btn-success")#
+						</cfif>
+					</span>
+				</div>
 			</div>
-		  
-			<div id="navbarBasicExample" class="navbar-menu">
-			  <div class="navbar-start">
-				<cfif StructKeyExists(session, "user")>
-						#linkTo(text="Rosters", controller="rosters", action="index",class="navbar-item")# 
-						#linkTo(text="Add New Roster", route="newRoster",class="navbar-item")#  
-				</cfif>
-				
-				#linkTo(text="About Us",    route="home",class="navbar-item")#
-				
-				<cfif StructKeyExists(session, "user") and session.user.admin> 
-					#linkTo(text="Users", route="users", class="navbar-item")# 
-				</cfif>
+		</nav>
 
-			  </div>
 
+
+
+	  
 	  
 			  <div class="navbar-end">
 				<div class="navbar-item">
@@ -86,6 +98,8 @@
 	  </script>
 
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-		</body>
+		
+		</div>
+	</body>
 </html>
+</cfoutput>
