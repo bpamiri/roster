@@ -19,43 +19,38 @@
 	set(obfuscateURLs=true);
 	
 	set(
-		class="input",
-		labelClass="label",
+		class="form-control",
+		labelClass="form-label",
 		functionName="textField",
 		labelPlacement="before",
-		prepend="</div>",
 		append="</div>",
-		prependToLabel="<div class='field'>",
-		appendToLabel="<div class='control'>",
+		prependToLabel='<div class="mb-3">',
 		encode=false
 		);
+	
 	set(
 		functionName="passwordField",
 		labelPlacement="before",
-		class="input",
-		labelClass="label",
-		prepend="</div>",
+		class="form-control",
+		labelClass="form-label",
 		append="</div>",
-		prependToLabel="<div class='field'>",
-		appendToLabel="<div class='control'>",
+		prependToLabel="<div class='mb-3'>",
 		encode=false
 		);
+	
 	set(
 		functionName="fileField",
 		labelPlacement="before",
-		class="file-input",
-		labelClass="file-label",
-		prepend="</div>",
+		class="form-control",
+		labelClass="form-label",
 		append="</div>",
-		prependToLabel="<div class='file'>",
-		appendToLabel="<div class='control'>",
+		prependToLabel='<div class="mb-3">',
 		encode=false
 		);
+
 	set(
 		functionName="submitTag",
-		class="button is-link",
-		prepend="<div class='control'>",
-		append="</div>",
+		class="btn btn-success",
 		encode=false
 		);
 					
