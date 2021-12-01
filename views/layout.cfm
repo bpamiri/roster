@@ -8,7 +8,7 @@
 
 		<title>RosterApp.io</title>
 	</head>
-	<body>
+	<body class="d-flex flex-column h-100">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
 				<a class="navbar-brand mb-0 h1" href="##">RosterApp.io</a>
@@ -44,11 +44,13 @@
 			</div>
 		</nav>
 
-		<div class="container">
-			#contentForLayout()#
-		</div>
+		<main class="flex-shrink-0">
+			<div class="container py-3">
+				#contentForLayout()#
+			</div>
+		</main>
 
-		<footer class="footer mt-auto py-3 bg-light">
+		<footer class="footer mt-3 py-2 bg-light">
 			<div class="container">
 				<span class="text-muted">
 					<strong>RosterApp.io</strong> is copyright &copy; 2005-<cfoutput>#year(now())#</cfoutput> Peter Amiri, All Rights Reseved.
