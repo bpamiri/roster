@@ -83,7 +83,6 @@
 			})();
 		  
 		  </script>
-		  <cfdump var="#cookie#">
-			</cfoutput>
+		</cfoutput>
 		</body>
 </html>

@@ -21,17 +21,20 @@
 	#textField(label="Email 1", objectName="roster", property="email1", size="40")#
 	#textField(label="Email 2", objectName="roster", property="email2", size="40")#
 	#textField(label="Email 3", objectName="roster", property="email3", size="40")#
-	#fileField(label="Roster File", objectName="roster", property="rosterFile", size="80")#
-	
-	<div>
-		#submitTag(value="Upload Now")#
+	<div class="file mb-2">
+		<label class="file-label">
+		  <input class="file-input" type="file" name="roster[rosterFile]">
+		  <span class="file-cta">
+			<span class="file-icon">
+			  <i class="fas fa-upload"></i>
+			</span>
+			<span class="file-label">
+			  Choose a file…
+			</span>
+		  </span>
+		</label>
 	</div>
-	
+	#submitTag(value="Upload Now")#
 	#endFormTag()#
 
 </cfoutput>
-
-<script type="text/javascript">
-  var focusHere = document.getElementById("roster-name");
-  focusHere = focusHere.focus();
-</script>

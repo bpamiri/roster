@@ -27,8 +27,36 @@
 		append="</div>",
 		prependToLabel="<div class='field'>",
 		appendToLabel="<div class='control'>",
-		encode=false);
-	set(functionName="passwordField",labelPlacement="before");
-	set(functionName="fileField",labelPlacement="before");
-
+		encode=false
+		);
+	set(
+		functionName="passwordField",
+		labelPlacement="before",
+		class="input",
+		labelClass="label",
+		prepend="</div>",
+		append="</div>",
+		prependToLabel="<div class='field'>",
+		appendToLabel="<div class='control'>",
+		encode=false
+		);
+	set(
+		functionName="fileField",
+		labelPlacement="before",
+		class="file-input",
+		labelClass="file-label",
+		prepend="</div>",
+		append="</div>",
+		prependToLabel="<div class='file'>",
+		appendToLabel="<div class='control'>",
+		encode=false
+		);
+	set(
+		functionName="submitTag",
+		class="button is-link",
+		prepend="<div class='control'>",
+		append="</div>",
+		encode=false
+		);
+					
 </cfscript>
