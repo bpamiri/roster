@@ -15,29 +15,9 @@
 		<div class="columns is-centered">
 		  <div class="column is-5-tablet is-4-desktop is-3-widescreen">
 			#startFormTag(route="signin",class="box")#
-			  <div class="field">
-				<label for="" class="label">Email</label>
-				<div class="control has-icons-left">
-				  <input type="email" placeholder="e.g. bobsmith@gmail.com" class="input" required="" id="user-email" name="user[email]">
-				  <span class="icon is-small is-left">
-					<i class="fa fa-envelope"></i>
-				  </span>
-				</div>
-			  </div>
-			  <div class="field">
-				<label for="" class="label">Password</label>
-				<div class="control has-icons-left">
-					<input type="password" placeholder="*******" class="input" required="" id="user-password" name="user[password]" >
-					<span class="icon is-small is-left">
-					<i class="fa fa-lock"></i>
-				  </span>
-				</div>
-			  </div>
-			  <div class="field">
-				<button class="button is-success">
-				  Login
-				</button>
-			  </div>
+				#textField(label="Roster Name",objectName="user", property="email", size="40")#
+				#passwordField(label="Password", objectName="user", property="password", size="40")#
+				#submitTag(value="Login")#
 			#endFormTag()#
 		  </div>
 		</div>
