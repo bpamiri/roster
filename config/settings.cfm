@@ -7,6 +7,8 @@
 	// set(dataSourceUserName="");
 	// set(dataSourcePassword=""); 
 
+	set(reloadPassword="built4us");
+	
 	/*
 		If you leave this setting commented out, CFWheels will try to determine the URL rewrite capabilities automatically.
 		The "URLRewriting" setting can bet set to "on", "partial" or "off".
