@@ -34,8 +34,9 @@
 <cfoutput>
 	<div class="block">
 		<p>
-			Peter Amiri
-			<img class="image is-64x64 is-rounded" src="https://www.gravatar.com/avatar/#lcase(Hash(lcase('peter@alurium.com')))#">
+			Peter Amiri<br>
+			<img class="rounded" src="https://www.gravatar.com/avatar/#lcase(Hash(lcase('peter@alurium.com')))#">
+			
 		</p>
 	</div>
 </cfoutput>
