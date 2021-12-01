@@ -44,17 +44,15 @@
 			</div>
 		</nav>
 
-		<section class="section">
-			<div class="content">
-				#contentForLayout()#
-			</div>
-		</section>
+		<div class="container">
+			#contentForLayout()#
+		</div>
 
-		<footer class="footer">
-			<div class="content has-text-centered">
-			<p>
-				<strong>RosterApp.io</strong> is copyright &copy; 2005-<cfoutput>#year(now())#</cfoutput> Peter Amiri, All Rights Reseved.
-			</p>
+		<footer class="footer mt-auto py-3 bg-light">
+			<div class="container">
+				<span class="text-muted">
+					<strong>RosterApp.io</strong> is copyright &copy; 2005-<cfoutput>#year(now())#</cfoutput> Peter Amiri, All Rights Reseved.
+				</span>
 			</div>
 		</footer>
 		
