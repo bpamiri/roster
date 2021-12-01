@@ -44,30 +44,6 @@
 			</div>
 		</nav>
 
-
-
-
-	  
-	  
-			  <div class="navbar-end">
-				<div class="navbar-item">
-				  <div class="buttons">
-					<cfif StructKeyExists(session, "user")>
-						<strong class="button">#session.user.email#</strong> 
-						#linkTo(text="My Account", controller="userManager", action="myaccount",class="button is-light")# 
-						#linkTo(text="Logout", route="logout",class="button is-primary")#
-					<cfelse>
-						#linkTo(text="Sign up", route="register",class="button is-secondary")#
-						#linkTo(text="Password Reset", route="reset",class="button is-light")#
-						#linkTo(text="Log in", route="login",class="button is-primary")#
-					</cfif>
-
-				  </div>
-				</div>
-			  </div>
-			</div>
-		</nav>
-
 		<section class="section">
 			<div class="content">
 				#contentForLayout()#
