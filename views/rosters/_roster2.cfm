@@ -138,7 +138,7 @@
     <cfset family = model("member").findAll(where="rosterid=#roster.id# AND HouseholdName='#hoh.HouseholdName#' AND AddressLine1='#hoh.AddressLine1#'",order="AgeGroup, LastName, FirstName")>
     <tr>
         <td colspan="4">
-            <table width="100%" cellspacing="0" cellpadding="0">
+            <table width="100%" cellspacing="0" cellpadding="0" style='border-collapse: collapse;'>
 
                 <tr style='border-bottom: 1px solid #000000;'>
                     <td width="30%" align="left" nowrap="yes" style='
@@ -146,7 +146,7 @@
                         padding-top: 15px;
                         font-size: 12px;
                         font-weight: bold;
-                        border-bottom: 1px solid #000000;
+                        border-bottom: .5px solid #000000;
                         '><cfoutput>#hoh.LastName#&nbsp;</cfoutput>
                     </td>
                     <td width="15%" align="center" nowrap="yes" style='
@@ -154,7 +154,7 @@
                         padding-top: 15px;
                         font-size: 10px;
                         font-weight: bold;
-                        border-bottom: 1px solid #000000;
+                        border-bottom: .5px solid #000000;
                         '><cfoutput><cfif hoh.sector neq "">Sector: #hoh.sector#</cfif>&nbsp;</cfoutput>
                     </td>
                     <td width="40%" align="center" nowrap="yes" style='
@@ -162,7 +162,7 @@
                         padding-top: 15px;
                         font-size: 10px;
                         font-weight: bold;
-                        border-bottom: 1px solid #000000;
+                        border-bottom: .5px solid #000000;
                         '><cfoutput>#hoh.AddressLine1#<---, #hoh.City#, #hoh.State# #hoh.ZipCode#---></cfoutput>
                     </td>
                     <td width="15%" align="right" nowrap="yes" style='
@@ -170,7 +170,7 @@
                         padding-top: 15px;
                         font-size: 12px;
                         font-weight: bold;
-                        border-bottom: 1px solid #000000;
+                        border-bottom: .5px solid #000000;
                         '><cfoutput>&nbsp;#trim(hoh.PhoneHome)#</cfoutput>
                     </td>
                 </tr>
