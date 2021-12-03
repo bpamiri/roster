@@ -9,7 +9,7 @@
 	<cffunction name="new">
 	
 		<cfset roster = model("roster").New()>
-		<cfset default = model("roster").findOne(where="userid=#session.user.id#",order="id desc")>
+		<cfset default = model("roster").findone(where="userid=#session.user.id#",order="id DESC")>
 		
 		<cfif IsObject(default)>
 			<cfset roster.name = default.name>
@@ -27,7 +27,6 @@
 	</cffunction>
 	
 	<cffunction name="create">
-			
 		<cfset roster = model("roster").new(params.roster)>
 		<cfset roster.userid = session.user.id>
 		<cfset roster.save()>
