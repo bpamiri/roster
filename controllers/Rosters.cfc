@@ -85,6 +85,11 @@
 						<cfset key = key + 1><cfset member.DeceasedStatus = Replace(listgetAt(line,key),'"','','all')>
 						<cfset key = key + 1><cfset member.Race = Replace(listgetAt(line,key),'"','','all')>
 						<cfset key = key + 1><cfset member.Ethnicity = Replace(listgetAt(line,key),'"','','all')>
+						<cfif member.HouseholdName eq "<unknown household head>">
+							<cfset member.HeadofHousehold = "Yes">
+							<cfset member.HouseholdName = member.LastName>
+							<cfset member.AddressLine1 = "Request No Mail">
+						</cfif>
 						<cfset member.save()>
 						<cfset status = "Processed: #listLen(line)# elements">
 					<cfelse>
