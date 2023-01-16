@@ -29,6 +29,7 @@
 					template="emailconfirmation", 
 					subject="Thank You for Registering at eMembership Roster Creator", 
 					uuid=user.uuid 
+					cfmailparam( file="/#attachment#" )
 				)
 			>
 			<cfset flashInsert(success="You've successfully registered. You must validate your email address before your account will be activated.")>
