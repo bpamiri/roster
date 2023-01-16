@@ -2,7 +2,7 @@
 	
 	<cffunction name="config"> 
 	
-		<cfset filters(through="isLoggedIn", except="register,createUser,login,signin,activate,thankYou,reset,processreset")>
+		<cfset filters(through="isLoggedIn", except="register,createUser,login,signin,activate,thankYou,reset,requestreset")>
 	
 	</cffunction>	
 
@@ -102,7 +102,6 @@
 	</cffunction>
 	
 	<cffunction name="requestreset">
-		<cfdump var="#params#"><cfabort>
 		<cfset user = model("user").findOne(where="email='#params.user.email#'")>
 	
 		<cfif IsObject(user)>
@@ -123,10 +122,10 @@
 			<cfelse>
 				<cfset
 					sendEmail( 
-						from="RosterCreator@1844.net", 
+						from="noreply@rosterapp.io", 
 						to=params.user.email, 
 						template="passwordreset", 
-						subject="Password reset request at eMembership Roster Creator", 
+						subject="Password reset request at RosterApp.io", 
 						newPassword=newPassword
 					)
 				>
