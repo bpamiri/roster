@@ -19,7 +19,7 @@
 		.post(name="signin",  		pattern="signin",  			controller="userManager", 	action="signin")
 		.get(name="activate",  		pattern="activate/[uuid]",  controller="userManager", 	action="activate")
 		.get(name="reset",  		pattern="reset",  			controller="userManager", 	action="reset")
-		.post(name="processreset", 	pattern="processreset",  	controller="userManager", 	action="processreset")
+		.post(name="requestreset", 	pattern="requestreset",  	controller="userManager", 	action="requestreset")
 		.get(name="myaccount",  	pattern="myaccount",  		controller="userManager", 	action="myaccount")
 		.post(name="updateaccount", pattern="updateaccount",  	controller="userManager", 	action="updateaccount")
 		
