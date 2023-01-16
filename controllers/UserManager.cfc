@@ -101,7 +101,8 @@
 	
 	</cffunction>
 	
-	<cffunction name="processreset">
+	<cffunction name="requestreset">
+		<cfdump var="#params#"><cfabort>
 		<cfset user = model("user").findOne(where="email='#params.user.email#'")>
 	
 		<cfif IsObject(user)>

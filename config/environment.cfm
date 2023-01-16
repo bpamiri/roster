@@ -4,5 +4,5 @@
 		For example, set it to "design" or "development" when you are building your application and to "production" when it's running live.
 	*/
 
-	set(environment="production");
+	set(environment="development");
 </cfscript>
