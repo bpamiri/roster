@@ -1,5 +1,5 @@
 <cfoutput>
-#cfmailparam( name="X-PM-Message-Stream: outbound" )#
+<cfmailparam name="X-PM-Message-Stream" value="outbound" >
 We recently received a request to reset your password. The password has been reset and the new password is listed below.
 
 New Password: #newPassword#
