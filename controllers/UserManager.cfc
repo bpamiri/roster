@@ -23,7 +23,7 @@
 		<cfelse>
 			<cfset
 				sendEmail( 
-					from="roster@1844.net", 
+					from="noreply@rosterapp.io", 
 					to=user.email, 
 					bcc="peter@alurium.com",
 					template="emailconfirmation", 
@@ -74,7 +74,7 @@
 		<cfif IsObject(user)>
 			<cfif user.activated eq 1>
 				<!--- account previously activated --->
-				<cfset flashInsert(error="Your account has already been activated. If you are having trouble logging in, please contact roster@1844.net.")>			
+				<cfset flashInsert(error="Your account has already been activated.")>			
 			<cfelse>
 				<cfset user.activated = 1>
 				<cfset user.save()>
@@ -88,7 +88,7 @@
 			</cfif>
 		<cfelse>
 			<!--- user record not found --->
-			<cfset flashInsert(error="The activation link you used seems to be invalid. Please contact roster@1844.net.")>
+			<cfset flashInsert(error="The activation link you used seems to be invalid.")>
 		</cfif>	
 		
 		<cfset redirectTo(route="login")>	
